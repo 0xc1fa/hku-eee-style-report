@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+
+\usepackage{finalreport} % uncomment this line for a final report
+% \usepackage{progressreport} % uncomment this line for a progress report
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{cleveref}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{doi}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\newfontfamily\chinesefont{Noto Serif TC}
+\usepackage{setspace}
+\usepackage{nomencl}
+\makenomenclature
+
+\hypersetup{
+  pdftitle={\@title},
+  pdfauthor={\@author},
+}
+
+% metadata for the  project
+\courseproject{The project course title here}
+\title{Your title here}
+\author{Your name here}
+\uid{Your UID here}
+\supervisor{Your supervisor's name here}
+\secondexaminer{Your second examiner's name here}
+
+
+\begin{document}
+
+\maketitle
+\frontmatter
+\input{sections/abstract.tex}
+\input{sections/acknowledgement.tex}
+\makefrontmatter
+\input{sections/abbreviations.tex}
+
+\mainmatter
+\section{What is \LaTeX{}?}
+\LaTeX{} is a typesetting system that allows you to focus on the content of your document rather than its appearance.
+
+\section{Basic Elements of a \LaTeX{} Document}
+Here is a list of some of the basic elements you'll often see in \LaTeX{} documents:
+
+\begin{itemize}
+  \item Document class declaration: This is where you specify the type of document (like article, book, etc.).
+  \item Packages: \LaTeX{} packages add extra functionality to \LaTeX{}.
+  \item Body: The body of the document is enclosed inside the \textbackslash begin\{document\} and \textbackslash end\{document\} commands.
+\end{itemize}
+
+\section{Creating Sections and Subsections}
+Use \textbackslash section\{Section Heading\} to create a section. For subsections, use \textbackslash subsection\{Subsection Heading\}.
+
+\section{Adding Images}
+To include images in your document, you need to use the `graphicx` package. Then you can use the \textbackslash includegraphics command to include your image. For example,
+
+\textbackslash begin\{figure\}[h]
+\textbackslash includegraphics[width=\textbackslash textwidth]{file.jpg}
+\textbackslash caption\{Image Caption\}
+\textbackslash end\{figure\}
+
+\section{Creating Equations}
+
+There are multiple ways to add equations in \LaTeX{}. A simple way is to use the `amsmath` package and use \textbackslash begin\{equation\} ... \textbackslash end\{equation\} environment. For example,
+
+\textbackslash begin\{equation\}
+% E = mc^2
+\textbackslash end\{equation\}
+
+\begin{equation}
+  E = mc^2
+\end{equation}
+
+\section{Creating Tables in \LaTeX{}}
+Tables in \LaTeX{} can be a bit more complex, but here's a simple example:
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Header 1} & \textbf{Header 2} \\
+    \hline
+    Item 1            & Item 2            \\
+    Item 3            & Item 4            \\
+    \hline
+  \end{tabular}
+  \caption{A Simple Table}
+  \label{table:1}
+\end{table}
+
+\section{Referencing Figures, Tables, and Sections}
+As shown in \Cref{table:1} and \Cref{fig:1}, \LaTeX{} allows cross-referencing figures, tables, and sections. Make sure to add a label after the caption like this:
+
+\begin{verbatim}
+ \caption{A Simple Table}
+ \label{table:1}
+\end{verbatim}
+
+Here is a figure for demonstration:
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.4\textwidth]{assets/placeholder.jpg}
+  \caption{A sample image}
+  \label{fig:1}
+\end{figure}
+
+Now you can refer back to these labels in your text using \textbackslash Cref.
+
+\section{Creating a Bibliography}
+A document often has a bibliography. Though there are a few methods to add one, we will use BibTeX in this example. Suppose we have a BibTeX file called references.bib with an entry:
+
+\begin{verbatim}
+@book{latexcompanion,
+author    = "Michel Goossens and Frank Mittelbach and Alexander Samarin",
+title     = "The \LaTeX\ Companion",
+year      = "1993",
+publisher = "Addison-Wesley",
+address   = "Reading, Massachusetts"
+}
+\end{verbatim}
+
+To cite this source in your document, use \textbackslash cite\{key\}, where key is the BibTeX entry key. Like so: \cite{latexcompanion}. Don't forget to reference your `.bib` file at the end of your document with:
+
+\begin{verbatim}
+\bibliography{references}
+\end{verbatim}
+
+And choose your style with \textbackslash bibliographystyle\{style\}. e.g.
+
+\begin{verbatim}
+\bibliographystyle{plain}
+\end{verbatim}
+
+\section{Conclusion}
+Please replace the placeholder content with your actual content. This is just a starting point and \LaTeX{} offers a far more rich set of features.
+
+\backmatter
+\makereferences
+\appendix
+\input{appendixes/appendix-a.tex}
+
+\end{document}
